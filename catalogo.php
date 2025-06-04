@@ -106,7 +106,6 @@ while ($linha = $especiesTemp->fetch_assoc()) {
             text-align: center;
             text-decoration: none;
             margin: 10px;
-            width: 100px;
         }
 
         /* Visualizar - azul */
@@ -190,8 +189,8 @@ while ($linha = $especiesTemp->fetch_assoc()) {
                     };
 
                     $edicao = "<button class='btn btn-view'>Visualizar</button>
-                        <button class='btn btn-edit'>Editar</button>
-                        <form action='edicao.php' method='POST'>
+                        <a class='btn btn-edit' href='edicao.php?id=$id'>Editar</a>
+                        <form action='apagar.php' method='POST'>
                             <button type='submit' name='apagar' value='$id' class='btn btn-delete'>Apagar</button>
                         </form>";
 
