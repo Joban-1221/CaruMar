@@ -36,31 +36,83 @@ while ($linha = $especiesTemp->fetch_assoc()) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Catálogo de Espécies</title>
     <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #166088;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --info-color: #17a2b8;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --light-gray: #e9ecef;
+            --border-radius: 6px;
+            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .header-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            text-align: left;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
         }
 
-        th,
-        td {
+        th, td {
             padding: 12px 15px;
-            border: 1px solid #ccc;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
         }
 
         th {
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
         }
 
         tr:nth-child(even) {
@@ -71,99 +123,138 @@ while ($linha = $especiesTemp->fetch_assoc()) {
             background-color: #f1f1f1;
         }
 
-        .btn-add {
+        .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
-            background-color: rgb(0, 206, 93);
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            padding: 12px 20px;
+            padding: 0.5rem 1rem;
             border: none;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
+            font-size: 0.85rem;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.25s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             text-decoration: none;
-            font-family: Arial, Helvetica, sans-serif;
+            margin: 0.25rem;
+        }
+
+        .btn-add {
+            background-color: var(--success-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
         }
 
         .btn-add:hover {
-            background-color: rgb(0, 235, 106);
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .btn {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 10px 20px;
-            border: 2px solid transparent;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            user-select: none;
-            display: inline-block;
-            text-align: center;
-            text-decoration: none;
-            margin: 10px;
-        }
-
-        /* Visualizar - azul */
         .btn-view {
-            background-color: #007BFF;
+            background-color: var(--info-color);
             color: white;
-            border-color: #007BFF;
         }
 
         .btn-view:hover {
-            background-color: transparent;
-            color: #007BFF;
+            background-color: #138496;
         }
 
-        /* Apagar - vermelho */
-        .btn-delete {
-            background-color: #dc3545;
-            color: white;
-            border-color: #dc3545;
-        }
-
-        .btn-delete:hover {
-            background-color: transparent;
-            color: #dc3545;
-        }
-
-        /* Editar - verde */
         .btn-edit {
-            background-color: #28a745;
+            background-color: var(--primary-color);
             color: white;
-            border-color: #28a745;
         }
 
         .btn-edit:hover {
-            background-color: transparent;
-            color: #28a745;
+            background-color: var(--secondary-color);
+        }
+
+        .btn-delete {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .thumbnail {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin: 2px;
+            border: 1px solid #ddd;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.5);
+            z-index: 10;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .img-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .container {
+                padding: 1rem;
+                overflow-x: auto;
+            }
+            
+            table {
+                font-size: 0.8rem;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
         }
     </style>
-
 </head>
 
 <body>
-    <div>
-        <a class="btn-add" href="/catalogação peixes/admin/adicionarEspecies.php">Adicionar Especie</a>
+    <div class="container">
+        <div class="header-wrapper">
+            <h1>Catálogo de Espécies</h1>
+            <a class="btn btn-add" href="/catalogação peixes/admin/adicionarEspecies.php">
+                <span>+</span> Adicionar Espécie
+            </a>
+        </div>
+
         <table>
             <thead>
                 <tr>
                     <th>Nome Popular</th>
-                    <th>Nome Cientifico</th>
+                    <th>Nome Científico</th>
                     <th>Reino</th>
                     <th>Descrição</th>
                     <th>Família</th>
                     <th>Gênero</th>
                     <th>Local</th>
-                    <th>Estado de Conservação</th>
-                    <th>Usuario</th>
-                    <th>Imgs</th>
-                    <th>Ferramentas</th>
+                    <th>Estado</th>
+                    <th>Usuário</th>
+                    <th>Imagens</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -179,41 +270,47 @@ while ($linha = $especiesTemp->fetch_assoc()) {
                     $localizacao = $especie["localizacao"];
                     $estado = $especie["estado"];
                     $usuario = $especie["usuario"];
-                    $textImg = "Não há Img";
-                    if ($especie["caminhoImg"]) {
-                        $arrayImg = $especie["caminhoImg"];
-                        $textImg = "";
-                        foreach ($arrayImg as $img) {
-                            $textImg = $textImg . "<br><img src='$img' style='width:100px;'>";
-                        };
-                    };
+                    
+                    // Tratamento das imagens
+                    $imagensHTML = "<div class='img-container'>Nenhuma imagem</div>";
+                    if (!empty($especie["caminhoImg"])) {
+                        $imagensHTML = "<div class='img-container'>";
+                        foreach ($especie["caminhoImg"] as $img) {
+                            $imagensHTML .= "<img src='$img' class='thumbnail' alt='Imagem da espécie'>";
+                        }
+                        $imagensHTML .= "</div>";
+                    }
 
-                    $edicao = "<button class='btn btn-view'>Visualizar</button>
-                        <a class='btn btn-edit' href='edicao.php?id=$id'>Editar</a>
-                        <form action='apagar.php' method='POST'>
-                            <button type='submit' name='apagar' value='$id' class='btn btn-delete'>Apagar</button>
-                        </form>";
+                    // Botões de ação
+                    $acoesHTML = "
+                        <div class='btn-group'>
+                            <button class='btn btn-view'>Visualizar</button>
+                            <a href='admin/edicao.php?id=$id' class='btn btn-edit'>Editar</a>
+                            <form action='apagar.php' method='POST' style='display:inline;'>
+                                <button type='submit' name='apagar' value='$id' class='btn btn-delete'>Apagar</button>
+                            </form>
+                        </div>
+                    ";
 
-                    print("
-                     <tr>
+                    echo "
+                    <tr>
                         <td>$nomeP</td>
                         <td>$nomeC</td>
                         <td>$reino</td>
-                        <td>$descricao</td>
+                        <td>" . substr($descricao, 0, 50) . "...</td>
                         <td>$familia</td>
                         <td>$genero</td>
                         <td>$localizacao</td>
                         <td>$estado</td>
                         <td>$usuario</td>
-                        <td>$textImg</td>
-                        <td>$edicao</td>
+                        <td>$imagensHTML</td>
+                        <td>$acoesHTML</td>
                     </tr>
-                    ");
+                    ";
                 }
                 ?>
             </tbody>
         </table>
     </div>
 </body>
-
 </html>
