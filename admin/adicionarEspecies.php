@@ -225,8 +225,8 @@ include_once("verificarAdmin.php");
                 </div>
 
                 <div class="form-group">
-                    <label for="localizacao">Local</label>
-                    <textarea id="localizacao" name="localizacao" maxlength="255" rows="4"></textarea>
+                    <label for="habitat">Habitat</label>
+                    <textarea id="habitat" name="habitat" maxlength="255" rows="4"></textarea>
                 </div>
 
                 <div class="form-group">

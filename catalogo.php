@@ -12,7 +12,7 @@ while ($linha = $especiesTemp->fetch_assoc()) {
     $especieTemp["familia"] = $linha["familia"];
     $especieTemp["genero"] = $linha["genero"];
     $especieTemp["estado"] = $linha["estado"];
-    $especieTemp["localizacao"] = $linha["localizacao"];
+    $especieTemp["habitat"] = $linha["habitat"];
     $especieTemp["caminhoImg"] = [];
 
     //Referencia o id com o usuario
@@ -250,7 +250,7 @@ while ($linha = $especiesTemp->fetch_assoc()) {
                     <th>Descrição</th>
                     <th>Família</th>
                     <th>Gênero</th>
-                    <th>Local</th>
+                    <th>Habitat</th>
                     <th>Estado</th>
                     <th>Usuário</th>
                     <th>Imagens</th>
@@ -267,7 +267,7 @@ while ($linha = $especiesTemp->fetch_assoc()) {
                     $descricao = $especie["descricao"];
                     $familia = $especie["familia"];
                     $genero = $especie["genero"];
-                    $localizacao = $especie["localizacao"];
+                    $habitat = $especie["habitat"];
                     $estado = $especie["estado"];
                     $usuario = $especie["usuario"];
                     
@@ -284,7 +284,7 @@ while ($linha = $especiesTemp->fetch_assoc()) {
                     // Botões de ação
                     $acoesHTML = "
                         <div class='btn-group'>
-                            <button class='btn btn-view'>Visualizar</button>
+                            <a href='visualizarEspecie.php?id=$id' class='btn btn-view'>Visualizar</a>
                             <a href='admin/edicao.php?id=$id' class='btn btn-edit'>Editar</a>
                             <form action='apagar.php' method='POST' style='display:inline;'>
                                 <button type='submit' name='apagar' value='$id' class='btn btn-delete'>Apagar</button>
@@ -300,7 +300,7 @@ while ($linha = $especiesTemp->fetch_assoc()) {
                         <td>" . substr($descricao, 0, 50) . "...</td>
                         <td>$familia</td>
                         <td>$genero</td>
-                        <td>$localizacao</td>
+                        <td>$habitat</td>
                         <td>$estado</td>
                         <td>$usuario</td>
                         <td>$imagensHTML</td>

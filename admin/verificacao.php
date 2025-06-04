@@ -9,15 +9,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descricao = $_POST["descricao"];
     $familia = $_POST["familia"];
     $genero = $_POST["genero"];
-    $localizacao = $_POST["localizacao"];
+    $habitat = $_POST["habitat"];
     $estado = $_POST["estado"];
     $modeloOld = $_POST["modeloOld"];
     $usuario = $_POST["usuario"];
 
-    $sql = "INSERT INTO especies(nomeP, nomeC, reino, descricao, familia, genero, estado, modeloOld, localizacao, id_usuario) 
+    $sql = "INSERT INTO especies(nomeP, nomeC, reino, descricao, familia, genero, estado, modeloOld, habitat, id_usuario) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("ssssssssss", $nomeP, $nomeC, $reino, $descricao, $familia, $genero, $estado, $modeloOld, $localizacao, $usuario);
+    $stmt->bind_param("ssssssssss", $nomeP, $nomeC, $reino, $descricao, $familia, $genero, $estado, $modeloOld, $habitat, $usuario);
     $stmt->execute();
 
     $especie_id = $stmt->insert_id;

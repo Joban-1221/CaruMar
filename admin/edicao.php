@@ -18,7 +18,7 @@ if (!empty($_GET["id"])) {
         $arrayDados['genero'] = $linha['genero'];
         $arrayDados['estado'] = $linha['estado'];
         $arrayDados['modeloOld'] = $linha['modeloOld'];
-        $arrayDados['localizacao'] = $linha['localizacao'];
+        $arrayDados['habitat'] = $linha['habitat'];
         $arrayDados['id_usuario'] = $linha['id_usuario'];
 
         $especie[] = $arrayDados;
@@ -164,7 +164,7 @@ $esp = $especie[0];
     </style>
 </head>
 <body>
-    <form action="atualizar_especie.php" method="post">
+    <form action="atualizarEspecie.php" method="post">
         <h1>Atualizar Espécie</h1>
         
         <div class="form-grid">
@@ -219,13 +219,20 @@ $esp = $especie[0];
             </div>
 
             <div class="form-group">
-                <label for="localizacao">Localização</label>
-                <input type="text" id="localizacao" name="localizacao" value="<?= htmlspecialchars($esp['localizacao']) ?>">
+                <label for="habitat">Habitat</label>
+                <input type="text" id="habitat" name="habitat" value="<?= htmlspecialchars($esp['habitat']) ?>">
             </div>
 
             <div class="form-group">
-                <label for="id_usuario">Usuário ID</label>
-                <input type="number" id="id_usuario" name="id_usuario" value="<?= htmlspecialchars($esp['id_usuario']) ?>" readonly>
+                <div class="form-group">
+                    <label for="usuario">Usuário</label>
+                    <select id="usuario" name="usuario">
+                        <option value="">Selecione...</option>
+                        <option value="1">Jovan</option>
+                        <option value="2">Klyssia</option>
+                        <option value="3">Geise</option>
+                    </select>
+                </div>
             </div>
         </div>
 
