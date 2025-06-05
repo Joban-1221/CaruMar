@@ -9,7 +9,7 @@ if (empty($_SESSION['usuario'])) {
 
 // Verifica se o usuário é admin
 if (empty($_SESSION['is_admin'])) {
-    header('Location: /catalogação peixes/catalogo.php');
+    header('Location: /catalogação peixes/catalogoPublico.php');
     exit();
 }
 ?>

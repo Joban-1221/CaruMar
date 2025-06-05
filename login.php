@@ -106,25 +106,46 @@
             font-size: 15px;
             border-radius: 3px;
         }
+
+        .btn-voltar {
+            background-color: rgb(0, 187, 244);
+            height: 50px;
+            color: white;
+            font-size: 15px;
+            text-decoration: none;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            width: 100%;
+            border-radius: 3px;
+        }
+        form{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
     </style>
 </head>
 
 <body>
     <div class="divLogin">
         <h1>Login</h1>
-        <form action="verificarLogin.php" method="POST" class="formLogin">
-            <input type="number" name="cpf" placeholder="Cpf" class="inputCpf">
-            <input type="password" name="senha" placeholder="Senha" class="inputSenha">
-            <input type="Submit" placeholder="Enviar" class="inputEnviar" name="Submit">
-        </form>
+        <div class="formLogin">
+            <form action="verificarLogin.php" method="POST">
+                <input type="number" name="cpf" placeholder="Cpf" class="inputCpf">
+                <input type="password" name="senha" placeholder="Senha" class="inputSenha">
+                <input type="Submit" placeholder="Enviar" class="inputEnviar" name="Submit">
+            </form>
+            <a href="./catalogoPublico.php" class="btn-voltar">Voltar</a>
+        </div>
     </div>
     <?php
-        if(isset($_GET['erro']))
-        {
-            $erro = $_GET['erro'];
-            $mensagem = ($erro == "Campo_Vazio") ? "Um dos campos fornecidos esta vazio" : (($erro == "Dados_Incorretos") ? "Os dados fornecidos estão incorretos" : "");
-            echo "<script>alert('$mensagem')</script>";
-        }
+    if (isset($_GET['erro'])) {
+        $erro = $_GET['erro'];
+        $mensagem = ($erro == "Campo_Vazio") ? "Um dos campos fornecidos esta vazio" : (($erro == "Dados_Incorretos") ? "Os dados fornecidos estão incorretos" : "");
+        echo "<script>alert('$mensagem')</script>";
+    }
     ?>
     <?php
     if (isset($_POST['Submit'])) {

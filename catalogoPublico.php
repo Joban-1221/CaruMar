@@ -269,10 +269,9 @@ while ($linha = $query->fetch_assoc()) {
                 
                 <div class="filter-container">
                     <button class="filter-btn active">Todas</button>
-                    <button class="filter-btn">Marinhas</button>
+                    <button class="filter-btn">Água Salgada</button>
                     <button class="filter-btn">Água Doce</button>
                     <button class="filter-btn">Ameaçadas</button>
-                    <button class="filter-btn">Comuns</button>
                 </div>
             </div>
         </header>
