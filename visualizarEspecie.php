@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once("admin/config.php");
 
 // Verifica se o ID da espécie foi passado
@@ -228,7 +229,7 @@ while ($linha = $result_imagens->fetch_assoc()) {
                 <h1 class="title"><?= htmlspecialchars($especie['nomeP']) ?></h1>
                 <h2 class="subtitle"><?= htmlspecialchars($especie['nomeC']) ?></h2>
             </div>
-            <a href="catalogo.php" class="btn btn-back">Voltar ao Catálogo</a>
+            <a href="<?php echo !empty($_SESSION['usuario_id']) ? 'catalogo.php' : 'catalogoPublico.php'; ?>" class="btn btn-back">Voltar ao Catálogo</a>
         </div>
 
         <div class="main-content">

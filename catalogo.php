@@ -303,6 +303,7 @@ while ($linha = $especiesTemp->fetch_assoc()) {
                     }
 
                     // Botões de ação
+                    if($_SESSION["usuario_id"] == 1){
                     $acoesHTML = "
                         <div class='btn-group'>
                             <a href='visualizarEspecie.php?id=$id' class='btn btn-view'>Visualizar</a>
@@ -312,6 +313,13 @@ while ($linha = $especiesTemp->fetch_assoc()) {
                             </form>
                         </div>
                     ";
+                    }else{
+                        $acoesHTML = "
+                        <div class='btn-group'>
+                            <a href='visualizarEspecie.php?id=$id' class='btn btn-view'>Visualizar</a>
+                        </div>
+                    ";
+                    }
 
                     echo "
                     <tr>

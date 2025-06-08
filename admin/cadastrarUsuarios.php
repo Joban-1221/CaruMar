@@ -1,5 +1,9 @@
 <?php
 include_once("verificarAdmin.php");
+if($_SESSION["usuario_id"] != 1){
+    header("Location: /Catalogação Peixes/catalogo.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

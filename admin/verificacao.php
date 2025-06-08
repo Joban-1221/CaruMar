@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    //header("Location: ../catalogo.php");
+    header("Location: ../catalogo.php");
 } else {
     header("Location: ../catalogo.php");
     exit();

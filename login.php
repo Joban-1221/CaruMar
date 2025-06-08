@@ -1,26 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar-se</title>
+    <title>CaruMar - Login</title>
+    <!-- Ícones do Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        html,
-        body {
-            height: 100%;
+        :root {
+            --primary-color: #166088;
+            --secondary-color: #4a6fa5;
+            --accent-color: #00bbf4;
+            --light-accent: #6ddfff;
+            --white: #ffffff;
+            --dark-bg: #1a1a1a;
+            --input-bg: rgba(255, 255, 255, 0.1);
+            --input-focus: rgba(255, 255, 255, 0.2);
+            --transition: all 0.3s ease;
+        }
+
+        * {
             margin: 0;
-            height: 100%;
-            overflow: hidden;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            background-color: #4c4c4c;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-
-            font-family: Arial, Helvetica, sans-serif;
+            color: var(--white);
+            background-color: var(--dark-bg);
+            overflow: hidden;
         }
 
         .video-background {
@@ -30,139 +44,244 @@
             width: 100%;
             height: 100%;
             z-index: -1;
+            overflow: hidden;
         }
 
-        video {
+        .video-background video {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            opacity: 0.6;
         }
 
-        .divLogin {
-            background-color: rgba(0, 0, 0, 0.4);
-            padding: 50px 30px 50px 30px;
-            border-radius: 20px;
-            height: auto;
-            width: 300px;
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
         }
 
-        .divLogin h1 {
+        .login-card {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo-container {
             text-align: center;
-            padding: 0;
-            margin: 0 0 15px;
-            color: white;
+            margin-bottom: 30px;
         }
 
-        .formLogin {
+        .logo-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .logo-container h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .login-form {
             display: flex;
             flex-direction: column;
-            height: 100%;
+            gap: 20px;
         }
 
-        .formLogin input {
-            margin: 10px 0 10px 0;
-            border-radius: 3px;
-            border: 0;
-            height: 50px;
-            font-size: 15px
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
         }
 
-        .inputSenha,
-        .inputCpf {
-            padding-left: 10px;
-            outline: 0;
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            z-index: 1;
         }
 
-        .inputSenha:focus,
-        .inputCpf:focus {
-            background-color: rgb(232, 232, 232);
+        .form-input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            background-color: var(--input-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--white);
+            font-size: 1rem;
+            transition: var(--transition);
         }
 
-        .inputCpf::-webkit-outer-spin-button,
-        .inputCpf::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
+        .form-input:focus {
+            outline: none;
+            background-color: var(--input-focus);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(0, 187, 244, 0.2);
         }
 
-        .inputCpf {
-            -moz-appearance: textfield;
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
         }
 
-        .inputEnviar {
-            background-color: rgb(0, 187, 244);
-            height: 60px;
-            color: white;
-            font-size: 15px;
-        }
-
-        .inputEnviar:hover {
-            background-color: rgb(109, 221, 255);
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
             cursor: pointer;
+            font-size: 1rem;
         }
 
-        .mostrarP {
-            color: white;
-            padding: 10px;
-            font-size: 15px;
-            border-radius: 3px;
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
-        .btn-voltar {
-            background-color: rgb(0, 187, 244);
-            height: 50px;
-            color: white;
-            font-size: 15px;
-            text-decoration: none;
+        .submit-btn:hover {
+            background-color: var(--light-accent);
+            transform: translateY(-2px);
+        }
+
+        .login-footer {
+            display: flex;
             justify-content: center;
             align-items: center;
-            display: flex;
-            width: 100%;
-            border-radius: 3px;
+            margin-top: 10px;
+            font-size: 0.9rem;
         }
-        form{
-            width: 100%;
-            height: 100%;
+
+        .back-link, .forgot-password {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-link:hover, .forgot-password:hover {
+            color: var(--accent-color);
+        }
+
+        /* Mensagens de erro */
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            margin-top: -15px;
+            display: none;
+        }
+
+        /* Responsividade */
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 30px 20px;
+            }
+            
+            .login-footer {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="divLogin">
-        <h1>Login</h1>
-        <div class="formLogin">
-            <form action="verificarLogin.php" method="POST">
-                <input type="number" name="cpf" placeholder="Cpf" class="inputCpf">
-                <input type="password" name="senha" placeholder="Senha" class="inputSenha">
-                <input type="Submit" placeholder="Enviar" class="inputEnviar" name="Submit">
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="assets/videos/aquatic-background.mp4" type="video/mp4">
+            <!-- Fallback para imagem caso o vídeo não carregue -->
+            <img src="assets/images/aquatic-fallback.jpg" alt="Background aquático">
+        </video>
+    </div>
+
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo-container">
+                <i class="fas fa-fish logo-icon"></i>
+                <h1>CaruMar</h1>
+            </div>
+            
+            <form action="verificarLogin.php" method="POST" class="login-form">
+                <div class="input-group">
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" name="cpf" placeholder="CPF" class="form-input" required>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" name="senha" placeholder="Senha" class="form-input" required>
+                    <button type="button" class="toggle-password" aria-label="Mostrar senha">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-sign-in-alt"></i> Entrar
+                </button>
+                
+                <div class="login-footer">
+                    <a href="index.php" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Paginca Inicial
+                    </a>
+                </div>
             </form>
-            <a href="./catalogoPublico.php" class="btn-voltar">Voltar</a>
         </div>
     </div>
-    <?php
-    if (isset($_GET['erro'])) {
-        $erro = $_GET['erro'];
-        $mensagem = ($erro == "Campo_Vazio") ? "Um dos campos fornecidos esta vazio" : (($erro == "Dados_Incorretos") ? "Os dados fornecidos estão incorretos" : "");
-        echo "<script>alert('$mensagem')</script>";
-    }
-    ?>
-    <?php
-    if (isset($_POST['Submit'])) {
-        $cpf = htmlspecialchars($_POST['cpf']);
-        $senha = htmlspecialchars($_POST['senha']);
-        $mostrar = '
-        <div class="divLogin" style="margin-left: 50px;">
-        <h1>Informações</h1>
-        <divclass="formLogin">
-            <p class="mostrarP">Cpf: ' . $cpf . '</p>
-            <p class="mostrarP">Senha: ' . $senha . '</p>
-        </div>   
-    </div>
-        ';
-        echo $mostrar;
-    }
-    ?>
+
+    <script>
+        // Mostrar/ocultar senha
+        document.querySelector('.toggle-password').addEventListener('click', function() {
+            const passwordInput = document.querySelector('input[name="senha"]');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        });
+
+        // Validação do CPF (apenas números)
+        document.querySelector('input[name="cpf"]').addEventListener('input', function() {
+            this.value = this.value.replace(/\D/g, '');
+        });
+
+        // Mostrar mensagens de erro do PHP
+        <?php if (isset($_GET['erro'])): ?>
+            const errorMessages = {
+                'Campo_Vazio': 'Por favor, preencha todos os campos',
+                'Dados_Incorretos': 'CPF ou senha incorretos'
+            };
+            
+            const errorType = '<?php echo $_GET['erro']; ?>';
+            alert(errorMessages[errorType] || 'Ocorreu um erro ao fazer login');
+        <?php endif; ?>
+    </script>
 </body>
 
 </html>

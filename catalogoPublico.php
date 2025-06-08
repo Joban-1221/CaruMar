@@ -1,6 +1,7 @@
 <?php
 include_once("admin/config.php");
 
+
 // Consulta as espécies com informações básicas
 $query = $conexao->query("
     SELECT e.id, e.nomeP, e.nomeC, e.descricao, i.caminho as imagem

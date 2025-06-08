@@ -1,4 +1,9 @@
 <?php
+session_start();
+if($_SESSION["usuario_id"] != 1){
+    header("Location: /Catalogação Peixes/catalogo.php");
+    exit();
+}
 if (!empty($_GET["id"])) {
     include_once("config.php");
     $id = (int)$_GET["id"]; // cast para int para maior segurança
@@ -231,6 +236,11 @@ $esp = $especie[0];
                         <option value="1">Jovan</option>
                         <option value="2">Klyssia</option>
                         <option value="3">Geise</option>
+                        <option value="4">Kerllon</option>
+                        <option value="5">Jamilly</option>
+                        <option value="6">Nathally</option>
+                        <option value="7">Adriele</option>
+                        <option value="8">Fabrícia</option>
                     </select>
                 </div>
             </div>

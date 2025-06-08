@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         foreach ($result as $linha) {
             if($cpf == $linha["cpf"] AND password_verify($senha, $linha["senha"])){
                 session_start();
+                $_SESSION["usuario_id"] = $linha["id"];
                 $_SESSION["usuario"] = $linha["usuario"];
                 $_SESSION["is_admin"] = $linha["is_admin"];
                 header("Location: catalogo.php");
