@@ -154,10 +154,11 @@ if($_SESSION["usuario_id"] != 1){
             transform: translateY(-2px);
         }
 
-        /* Validação do CPF */
+        /* Validação do CPF 
         input[name="cpf"] {
             -moz-appearance: textfield;
         }
+        */
 
         input[name="cpf"]::-webkit-outer-spin-button,
         input[name="cpf"]::-webkit-inner-spin-button {

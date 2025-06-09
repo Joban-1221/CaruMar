@@ -199,7 +199,6 @@ while ($linha = $query->fetch_assoc()) {
             font-size: 0.95rem;
             margin-bottom: 1.5rem;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
