@@ -39,6 +39,7 @@ while ($linha = $result_imagens->fetch_assoc()) {
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -202,26 +203,27 @@ while ($linha = $result_imagens->fetch_assoc()) {
             .main-content {
                 grid-template-columns: 1fr;
             }
-            
+
             .container {
                 padding: 1rem;
                 margin: 1rem;
             }
-            
+
             .title {
                 font-size: 1.5rem;
             }
-            
+
             .subtitle {
                 font-size: 1rem;
             }
-            
+
             .additional-info {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -236,13 +238,13 @@ while ($linha = $result_imagens->fetch_assoc()) {
             <div class="image-section">
                 <?php if (!empty($imagens)): ?>
                     <img id="main-image" src="<?= htmlspecialchars($imagens[0]) ?>" class="main-image" alt="Imagem principal da espécie">
-                    
+
                     <div class="thumbnail-container">
                         <?php foreach ($imagens as $index => $img): ?>
-                            <img src="<?= htmlspecialchars($img) ?>" 
-                                 class="thumbnail" 
-                                 alt="Imagem da espécie"
-                                 onclick="document.getElementById('main-image').src = '<?= htmlspecialchars($img) ?>'">
+                            <img src="<?= htmlspecialchars($img) ?>"
+                                class="thumbnail"
+                                alt="Imagem da espécie"
+                                onclick="document.getElementById('main-image').src = '<?= htmlspecialchars($img) ?>'">
                         <?php endforeach; ?>
                     </div>
                 <?php else: ?>
@@ -280,6 +282,14 @@ while ($linha = $result_imagens->fetch_assoc()) {
                     </div>
                 </div>
 
+
+                <!-- Novo campo: Tipo de Água -->
+                <div class="info-section">
+                    <h3 class="info-title">Tipo de Água</h3>
+                    <div class="info-content">
+                        <p><?= $especie['agua'] == 'Ambos' ? 'Doce e Salgada' : $especie['agua'] ?></p>
+                    </div>
+                </div>
                 <div class="info-section">
                     <h3 class="info-title">Cadastrado por</h3>
                     <div class="info-content">
@@ -297,8 +307,9 @@ while ($linha = $result_imagens->fetch_assoc()) {
                         <p><?= htmlspecialchars($especie['habitat']) ?></p>
                     </div>
                 </div>
+
             </div>
-            
+
             <div>
                 <div class="info-section">
                     <h3 class="info-title">Estado de Conservação</h3>
@@ -319,4 +330,5 @@ while ($linha = $result_imagens->fetch_assoc()) {
         });
     </script>
 </body>
+
 </html>

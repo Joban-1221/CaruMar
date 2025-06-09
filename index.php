@@ -8,6 +8,7 @@ include 'header.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icone.png" type="image/x-icon">
     <title>CaruMar - Catálogo de Espécies Aquáticas</title>
     <style>
         :root {
@@ -35,15 +36,6 @@ include 'header.php';
             line-height: 1.6;
             background-image: linear-gradient(to bottom, var(--light-aqua), #cce6ff);
             min-height: 100vh;
-        }
-
-        header {
-            background-color: var(--white);
-            box-shadow: var(--box-shadow);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
         }
 
         .nav-container {
@@ -319,12 +311,15 @@ include 'header.php';
         </section>
     </main>
     <footer>
-        <div class="footer-links">
-            <a href="sobre.php" class="footer-link">Sobre o Projeto</a>
+      <div class="footer-links">
+        <a href="sobre.php" class="footer-link">Sobre o Projeto</a>
+        <!--  
             <a href="contato.php" class="footer-link">Contato</a>
             <a href="termos.php" class="footer-link">Termos de Uso</a>
             <a href="privacidade.php" class="footer-link">Política de Privacidade</a>
+            -->
         </div>
+
         <p class="copyright">© <?php echo date('Y'); ?> PeixeMar - Todos os direitos reservados</p>
     </footer>
 </html>

@@ -14,6 +14,7 @@ while ($linha = $especiesTemp->fetch_assoc()) {
     $especieTemp["genero"] = $linha["genero"];
     $especieTemp["estado"] = $linha["estado"];
     $especieTemp["habitat"] = $linha["habitat"];
+    $especieTemp["agua"] = $linha["agua"];
     $especieTemp["caminhoImg"] = [];
 
     //Referencia o id com o usuario
@@ -68,16 +69,17 @@ while ($linha = $especiesTemp->fetch_assoc()) {
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
-            padding: 2rem;
+            padding: 1rem;
         }
 
         .container {
             max-width: 100%;
             margin: 0 auto;
             background: white;
-            padding: 2rem;
+            padding: 1rem;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
+            overflow-x: auto;
         }
 
         h1 {
@@ -85,13 +87,21 @@ while ($linha = $especiesTemp->fetch_assoc()) {
             margin-bottom: 1.5rem;
             color: var(--secondary-color);
             font-weight: 600;
+            font-size: 1.5rem;
         }
 
         .header-wrapper {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 1rem;
             margin-bottom: 1.5rem;
+        }
+
+        .header-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
         }
 
         table {
@@ -100,13 +110,14 @@ while ($linha = $especiesTemp->fetch_assoc()) {
             margin: 1.5rem 0;
             font-size: 0.9rem;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            min-width: 800px;
         }
 
-        th,
-        td {
-            padding: 12px 15px;
+        th, td {
+            padding: 10px 8px;
             text-align: left;
             border-bottom: 1px solid #e0e0e0;
+            font-size: 0.85rem;
         }
 
         th {
@@ -114,7 +125,7 @@ while ($linha = $especiesTemp->fetch_assoc()) {
             color: white;
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 0.5px;
         }
 
@@ -130,33 +141,34 @@ while ($linha = $especiesTemp->fetch_assoc()) {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
+            gap: 0.3rem;
+            padding: 0.5rem 0.8rem;
             border: none;
             border-radius: var(--border-radius);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.25s ease;
             text-decoration: none;
-            margin: 0.25rem;
+            margin: 0.15rem;
         }
 
         .btn-add {
             background-color: var(--success-color);
             color: white;
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1rem;
             font-weight: 600;
         }
 
         .btn-voltar {
             background-color: var(--info-color);
             color: white;
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1rem;
             font-weight: 600;
         }
+        
         .btn-voltar:hover {
-            background-color:rgb(33, 95, 136);
+            background-color: rgb(33, 95, 136);
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -197,12 +209,12 @@ while ($linha = $especiesTemp->fetch_assoc()) {
         .btn-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.3rem;
         }
 
         .thumbnail {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             object-fit: cover;
             border-radius: 4px;
             margin: 2px;
@@ -219,32 +231,37 @@ while ($linha = $especiesTemp->fetch_assoc()) {
         .img-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.3rem;
         }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
+            .header-wrapper {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
             }
-
-            .container {
-                padding: 1rem;
-                overflow-x: auto;
+            
+            .header-actions {
+                justify-content: flex-end;
             }
-
+            
             table {
-                font-size: 0.8rem;
+                font-size: 0.9rem;
+                min-width: auto;
             }
-
-            th,
-            td {
-                padding: 8px 10px;
+            
+            th, td {
+                padding: 12px 15px;
+                font-size: 0.85rem;
             }
-
-            .btn-group {
-                flex-direction: column;
+            
+            .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
             }
-        }
+            
+            .thumbnail {
+                width: 60px;
+                height: 60px;
+            }
     </style>
 </head>
 
@@ -252,13 +269,13 @@ while ($linha = $especiesTemp->fetch_assoc()) {
     <div class="container">
         <div class="header-wrapper">
             <h1>Catálogo de Espécies</h1>
-            <div>
-            <a class="btn btn-voltar" href="/catalogação peixes/catalogoPublico.php">
-                <span><=</span> Catalogo Público
-            </a>
-            <a class="btn btn-add" href="/catalogação peixes/admin/adicionarEspecies.php">
-                <span>+</span> Adicionar Espécie
-            </a>
+            <div class="header-actions">
+                <a class="btn btn-voltar" href="catalogoPublico.php">
+                    <span><=</span> Público
+                </a>
+                <a class="btn btn-add" href="admin/adicionarEspecies.php">
+                    <span>+</span> Adicionar
+                </a>
             </div>
         </div>
 
@@ -273,6 +290,7 @@ while ($linha = $especiesTemp->fetch_assoc()) {
                     <th>Gênero</th>
                     <th>Habitat</th>
                     <th>Estado</th>
+                    <th>Água</th>
                     <th>Usuário</th>
                     <th>Imagens</th>
                     <th>Ações</th>
@@ -291,6 +309,7 @@ while ($linha = $especiesTemp->fetch_assoc()) {
                     $habitat = $especie["habitat"];
                     $estado = $especie["estado"];
                     $usuario = $especie["usuario"];
+                    $agua = $especie["agua"];
 
                     // Tratamento das imagens
                     $imagensHTML = "<div class='img-container'>Nenhuma imagem</div>";
@@ -306,9 +325,9 @@ while ($linha = $especiesTemp->fetch_assoc()) {
                     if($_SESSION["usuario_id"] == 1){
                     $acoesHTML = "
                         <div class='btn-group'>
-                            <a href='visualizarEspecie.php?id=$id' class='btn btn-view'>Visualizar</a>
+                            <a href='visualizarEspecie.php?id=$id' class='btn btn-view'>Ver</a>
                             <a href='admin/edicao.php?id=$id' class='btn btn-edit'>Editar</a>
-                            <form action='apagar.php' method='POST' style='display:inline;'>
+                            <form action='admin/apagar.php' method='POST' style='display:inline;'>
                                 <button type='submit' name='apagar' value='$id' class='btn btn-delete'>Apagar</button>
                             </form>
                         </div>
@@ -316,7 +335,7 @@ while ($linha = $especiesTemp->fetch_assoc()) {
                     }else{
                         $acoesHTML = "
                         <div class='btn-group'>
-                            <a href='visualizarEspecie.php?id=$id' class='btn btn-view'>Visualizar</a>
+                            <a href='visualizarEspecie.php?id=$id' class='btn btn-view'>Ver</a>
                         </div>
                     ";
                     }
@@ -331,6 +350,7 @@ while ($linha = $especiesTemp->fetch_assoc()) {
                         <td>$genero</td>
                         <td>$habitat</td>
                         <td>$estado</td>
+                        <td>$agua</td>
                         <td>$usuario</td>
                         <td>$imagensHTML</td>
                         <td>$acoesHTML</td>

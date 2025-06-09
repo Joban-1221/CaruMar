@@ -30,7 +30,7 @@ if (session_status() === PHP_SESSION_NONE) {
             background-color: var(--white);
             box-shadow: var(--box-shadow);
             padding: 1rem 0;
-            position: sticky;
+            position: relative;
             top: 0;
             z-index: 100;
         }

@@ -268,12 +268,6 @@ while ($linha = $query->fetch_assoc()) {
                     <input type="text" class="search-input" placeholder="Buscar espécies...">
                 </div>
                 
-                <div class="filter-container">
-                    <button class="filter-btn active">Todas</button>
-                    <button class="filter-btn">Água Salgada</button>
-                    <button class="filter-btn">Água Doce</button>
-                    <button class="filter-btn">Ameaçadas</button>
-                </div>
             </div>
         </header>
         

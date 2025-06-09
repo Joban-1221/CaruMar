@@ -2,7 +2,7 @@
 $servername = "localhost"; // ou IP do servidor
 $username = "root";
 $password = "";
-$dbname = "catalogacao";
+$dbname = "carumar";
 
 // Criar conexão
 $conexao = new mysqli($servername, $username, $password, $dbname);

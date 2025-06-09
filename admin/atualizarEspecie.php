@@ -12,11 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $estado = $_POST["estado"];
     $modeloOld = $_POST["modeloOld"];
     $id_usuario = $_POST["usuario"];
+    $agua = $_POST["agua"];
     $id = $_POST["id"];
 
-    $sql = "UPDATE especies SET nomeP=?, nomeC=?, reino=?, descricao=?, familia=?, genero=?, estado=?, modeloOld=?, habitat=?, id_usuario=? WHERE id=?";
+    $sql = "UPDATE especies SET nomeP=?, nomeC=?, reino=?, descricao=?, familia=?, genero=?, estado=?, modeloOld=?, habitat=?, id_usuario=?, agua=? WHERE id=?";
     $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("sssssssssss", $nomeP, $nomeC, $reino, $descricao, $familia, $genero, $estado, $modeloOld, $habitat, $id_usuario, $id);
+    $stmt->bind_param("ssssssssssss", $nomeP, $nomeC, $reino, $descricao, $familia, $genero, $estado, $modeloOld, $habitat, $id_usuario, $agua, $id);
     $stmt->execute();
 
     header("Location: ../catalogo.php");

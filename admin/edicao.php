@@ -1,7 +1,7 @@
 <?php
 session_start();
 if($_SESSION["usuario_id"] != 1){
-    header("Location: /Catalogação Peixes/catalogo.php");
+    header("Location: ../catalogo.php");
     exit();
 }
 if (!empty($_GET["id"])) {
@@ -31,12 +31,12 @@ if (!empty($_GET["id"])) {
 
     if (count($especie) === 0) {
         // Se não encontrou a espécie, redireciona
-        header("Location: catalogo.php");
+        header("Location: ../catalogo.php");
         exit();
     }
 
 } else {
-    header("Location: catalogo.php");
+    header("Location: ../catalogo.php");
     exit();
 }
 
@@ -224,6 +224,16 @@ $esp = $especie[0];
             </div>
 
             <div class="form-group">
+                    <label for="agua">Tipo de Água</label>
+                    <select id="agua" name="agua" required>
+                        <option value="">Selecione...</option>
+                        <option value="Doce">Água Doce</option>
+                        <option value="Salgada">Água Salgada</option>
+                        <option value="Ambos">Ambos Tipos</option>
+                    </select>
+                </div>
+
+            <div class="form-group">
                 <label for="habitat">Habitat</label>
                 <input type="text" id="habitat" name="habitat" value="<?= htmlspecialchars($esp['habitat']) ?>">
             </div>
@@ -241,6 +251,8 @@ $esp = $especie[0];
                         <option value="6">Nathally</option>
                         <option value="7">Adriele</option>
                         <option value="8">Fabrícia</option>
+                        <option value="9">Rayane</option>
+                        <option value="10">Maria Clara</option>
                     </select>
                 </div>
             </div>

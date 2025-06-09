@@ -209,14 +209,6 @@
 </head>
 
 <body>
-    <div class="video-background">
-        <video autoplay muted loop>
-            <source src="assets/videos/aquatic-background.mp4" type="video/mp4">
-            <!-- Fallback para imagem caso o vídeo não carregue -->
-            <img src="assets/images/aquatic-fallback.jpg" alt="Background aquático">
-        </video>
-    </div>
-
     <div class="login-container">
         <div class="login-card">
             <div class="logo-container">

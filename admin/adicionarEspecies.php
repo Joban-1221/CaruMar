@@ -1,7 +1,7 @@
 <?php
 include_once("verificarAdmin.php");
 if($_SESSION["usuario_id"] != 1){
-    header("Location: /Catalogação Peixes/catalogo.php");
+    header("Location: ../catalogo.php");
     exit();
 }
 ?>
@@ -233,6 +233,16 @@ if($_SESSION["usuario_id"] != 1){
                     <textarea id="habitat" name="habitat" maxlength="255" rows="4"></textarea>
                 </div>
 
+                 <div class="form-group">
+                    <label for="agua">Tipo de Água</label>
+                    <select id="agua" name="agua" required>
+                        <option value="">Selecione...</option>
+                        <option value="Doce">Água Doce</option>
+                        <option value="Salgada">Água Salgada</option>
+                        <option value="Ambos">Ambos Tipos</option>
+                    </select>
+                </div>
+                
                 <div class="form-group">
                     <label for="estado">Estado de Conservação</label>
                     <input type="text" id="estado" name="estado" maxlength="50">
@@ -250,6 +260,8 @@ if($_SESSION["usuario_id"] != 1){
                         <option value="6">Nathally</option>
                         <option value="7">Adriele</option>
                         <option value="8">Fabrícia</option>
+                        <option value="9">Rayane</option>
+                        <option value="10">Maria Clara</option>
                     </select>
                 </div>
             </div>

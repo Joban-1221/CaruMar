@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Conexão com o banco
-    include_once("admin/config.php");
+    include_once("config.php");
 
     // ID da espécie (pode vir por POST, exemplo)
     $id = $_POST["apagar"];
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $conexao->query("DELETE FROM imagens WHERE especie_id = $id");
     $conexao->query("DELETE FROM especies WHERE id = $id");
-    header("Location: catalogo.php");
+    header("Location: ../catalogo.php");
 } else {
-    header("Location: catalogo.php");
+    header("Location: ../catalogo.php");
 }
