@@ -279,7 +279,7 @@ include 'header.php';
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Peixes coloridos" class="hero-img">
+                <img src="especies/Amure/imagens/Amure.jpg" alt="Peixes coloridos" class="hero-img">
             </div>
         </section>
 
