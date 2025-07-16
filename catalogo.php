@@ -196,7 +196,13 @@ while ($linha = $especiesTemp->fetch_assoc()) {
         .btn-edit:hover {
             background-color: var(--secondary-color);
         }
-
+    .btn-erro{
+        background-color:rgb(230, 230, 62);
+        color: white;
+    }
+    .btn-erro:hover{
+        background-color:rgb(160, 160, 44);
+    }
         .btn-delete {
             background-color: var(--danger-color);
             color: white;
@@ -327,6 +333,7 @@ while ($linha = $especiesTemp->fetch_assoc()) {
                         <div class='btn-group'>
                             <a href='visualizarEspecie.php?id=$id' class='btn btn-view'>Ver</a>
                             <a href='admin/edicao.php?id=$id' class='btn btn-edit'>Editar</a>
+                            <a href='admin/relatarErro.php?id=$id' class='btn btn-erro'>Relatar</a>
                             <form action='admin/apagar.php' method='POST' style='display:inline;'>
                                 <button type='submit' name='apagar' value='$id' class='btn btn-delete'>Apagar</button>
                             </form>
