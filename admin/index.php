@@ -6,7 +6,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 // Verifica se o usuário é administrador
 if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_id'] != 1) {
-    header('Location: ../catalogo.php');
+    header('Location: /carumar/catalogo.php');
     exit();
 }
 ?>
@@ -158,6 +158,14 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_id'] != 1) {
             background-color: var(--success-color);
         }
 
+        .btn-erro{
+            background-color: #d38d2bff;
+        }
+
+        .btn-erro:hover{
+            background-color: #a56e21ff;
+        }
+
         .btn-add:hover {
             background-color: #218838;
         }
@@ -250,6 +258,19 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_id'] != 1) {
                 <p class="card-desc">Cadastre uma nova espécie de peixe no sistema</p>
                 <a href="adicionarEspecies.php" class="card-btn btn-add">
                     <i class="fas fa-plus"></i> Nova Espécie
+                </a>
+            </div>
+
+            <!-- Ver Erros -->
+            <div class="dashboard-card">
+                <i class="fas fa-fish fish-decoration fish-1"></i>
+                <div class="card-icon">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+                <h3 class="card-title">Erros Relatados</h3>
+                <p class="card-desc">Analizar erros relatados de espécies</p>
+                <a href="verErros.php" class="card-btn btn-erro">
+                    <i class="fa-solid fa-magnifying-glass"></i> Ver Erros
                 </a>
             </div>
 
